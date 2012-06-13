@@ -2,7 +2,7 @@ var express = require('express');
 var app = express.createServer(express.logger());
 
 app.get('/', function(request, response) {
-  response.send('Hello World - I am a node js web routeasd!');
+  response.send('Card Sharp landing page!');
 });
 
 var port = process.env.PORT || 5000;
