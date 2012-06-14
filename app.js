@@ -42,6 +42,7 @@ var Benefit = new Schema({
 
 var Card = new Schema({  
     name: { type: String, required: true, unique: true  },  
+    company: { type: String, required: true, unique: false  },      
     type: { type: String, required: true },
     minRate: { type: Number, required: false },              
     maxRate: { type: Number, required: false },
@@ -133,6 +134,7 @@ app.post('/api/cards', function (req, res){
   console.log(req.body);
   card = new CardModel({
     name: req.body.name,
+    company: req.body.company,
     type: req.body.type,
     minRate: req.body.minRate,
     maxRate: req.body.maxRate,
@@ -165,12 +167,12 @@ app.get('/api/cards/:id', function (req, res){
 app.put('/api/cards/:id', function (req, res){
   return CardModel.findById(req.params.id, function (err, card) {
     card.name = req.body.name;
-    card.description = req.body.description;    
+    card.company = req.body.company;    
     card.type =  req.body.type;
     card.minRate = req.body.minRate;
     card.maxRate = req.body.maxRate;
     card.introRate =req.body.introRate;
-    card.introExpiration = req.body.introExpiration;
+    card.introMonths = req.body.introMonths;
     card.benefits = req.body.benefits;
     return product.save(function (err) {
       if (!err) {
