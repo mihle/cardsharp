@@ -36,9 +36,18 @@ var Product = new Schema({
     modified: { type: Date, default: Date.now }
 });
 
+var Benefit = new Schema({
+    description: String
+});
+
 var Card = new Schema({  
     name: { type: String, required: true, unique: true  },  
-    description: { type: String, required: true },  
+    type: { type: String, required: true },  
+    minRate: { type: Number, required: false },              
+    maxRate: { type: Number, required: false },
+    introRate: { type: Number, required: false },      
+    introExpiration: { type: Date, required: false },
+	benefits: [Benefit],                                    
     modified: { type: Date, default: Date.now }
 });
 
@@ -124,7 +133,17 @@ app.post('/api/cards', function (req, res){
   console.log(req.body);
   card = new CardModel({
     name: req.body.name,
-    description: req.body.description
+    description: req.body.description,
+
+    type: req.body.type,  
+    minRate: ,
+    maxRate: ,
+    introRate: ,
+    introExpiration: ,
+
+
+    benefits: req.body.benefits,
+
   });
   card.save(function (err) {
     if (!err) {
@@ -152,6 +171,7 @@ app.put('/api/cards/:id', function (req, res){
   return CardModel.findById(req.params.id, function (err, card) {
     card.name = req.body.name;
     card.description = req.body.description;    
+
     return product.save(function (err) {
       if (!err) {
         console.log("updated");
