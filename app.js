@@ -37,7 +37,7 @@ var Product = new Schema({
 });
 
 var Benefit = new Schema({
-    description: String
+    detail: String
 });
 
 var Card = new Schema({  
@@ -47,7 +47,7 @@ var Card = new Schema({
     maxRate: { type: Number, required: false },
     introRate: { type: Number, required: false },      
     introExpiration: { type: Date, required: false },
-	benefits: [Benefit],                                    
+    benefits: [Benefit],                                    
     modified: { type: Date, default: Date.now }
 });
 
@@ -133,17 +133,12 @@ app.post('/api/cards', function (req, res){
   console.log(req.body);
   card = new CardModel({
     name: req.body.name,
-    description: req.body.description,
-
     type: req.body.type,  
-    minRate: ,
-    maxRate: ,
-    introRate: ,
-    introExpiration: ,
-
-
+    minRate: req.body.minRate,
+    maxRate: req.body.maxRate,
+    introRate: req.body.introRate,
+    introExpiration: req.body.introExpiration,
     benefits: req.body.benefits,
-
   });
   card.save(function (err) {
     if (!err) {
@@ -171,7 +166,12 @@ app.put('/api/cards/:id', function (req, res){
   return CardModel.findById(req.params.id, function (err, card) {
     card.name = req.body.name;
     card.description = req.body.description;    
-
+    card.type =  req.body.type;
+    card.minRate = req.body.minRate;
+    card.maxRate = req.body.maxRate;
+    card.introRate =req.body.introRate;
+    card.introExpiration = req.body.introExpiration;
+    card.benefits = req.body.benefits;
     return product.save(function (err) {
       if (!err) {
         console.log("updated");
