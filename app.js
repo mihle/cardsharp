@@ -36,15 +36,22 @@ var Product = new Schema({
     modified: { type: Date, default: Date.now }
 });
 
-
-var ProductModel = mongoose.model('Product', Product);  
-
-// API Routes
-app.get('/api', function (req, res) {
-  res.send('Cardsharp API is running');
+var Card = new Schema({  
+    name: { type: String, required: true, unique: true  },  
+    description: { type: String, required: true },  
+    modified: { type: Date, default: Date.now }
 });
 
 
+var ProductModel = mongoose.model('Product', Product);  
+var CardModel = mongoose.model('Card', Card);  
+
+// API Routes
+app.get('/api', function (req, res) {
+  res.send('Card Sharp API is running');
+});
+
+// Products API CRUD
 app.get('/api/products', function (req, res){
   return ProductModel.find(function (err, products) {
     if (!err) {
@@ -97,6 +104,79 @@ app.delete('/api/products/:id', function (req, res){
   });
 });
 
+// Card API CRUD
+
+// get cards
+app.get('/api/products', function (req, res){
+  return CardModel.find(function (err, cards) {
+    if (!err) {
+      return res.send(cards);
+    } else {
+      return console.log(err);
+    }
+  });
+});
+
+// add card
+app.post('/api/cards', function (req, res){
+  var card;
+  console.log("POST: ");
+  console.log(req.body);
+  card = new CardModel({
+    name: req.body.name,
+    description: req.body.description
+  });
+  card.save(function (err) {
+    if (!err) {
+      return console.log("created");
+    } else {
+      return console.log(err);
+    }
+  });
+  return res.send(card);
+});
+
+// get card
+app.get('/api/cards/:id', function (req, res){
+  return CardModel.findById(req.params.id, function (err, card) {
+    if (!err) {
+      return res.send(card);
+    } else {
+      return console.log(err);
+    }
+  });
+});
+
+// update card
+app.put('/api/cards/:id', function (req, res){
+  return CardModel.findById(req.params.id, function (err, card) {
+    card.name = req.body.name;
+    card`.description = req.body.description;    
+    return product.save(function (err) {
+      if (!err) {
+        console.log("updated");
+      } else {
+        console.log(err);
+      }
+      return res.send(card);
+    });
+  });
+});
+
+
+// delete
+app.delete('/api/cards/:id', function (req, res){
+  return CardModel.findById(req.params.id, function (err, card) {
+    return card.remove(function (err) {
+      if (!err) {
+        console.log("removed");
+        return res.send('');
+      } else {
+        console.log(err);
+      }
+    });
+  });
+});
 
 
 
