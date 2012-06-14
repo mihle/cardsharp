@@ -1,18 +1,129 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>Card Sharp!</title>
+    <title>Sunny and Share</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+    </style>
+    <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="./assets/img/sun.ico">
+
   </head>
+
   <body>
-    <h1>Card Sharp Landing Page</h1>
-    <section>
-      <h1>Nouns...</h1>
-      <p>
-        /products<br>
-        /products/:id
-      </p>
-    </section>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  </body>
-</html>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="./index.html" style="color:darkorange">Sunny and Share</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li><a href="./index.html">Home</a></li>
+            </ul>
+            <form action="./start.html" class="navbar-search pull-left">
+              <input type="text" class="span4 search-query" placeholder="Address" name="providerAccountId">
+              <button type="submit" class="btn">Find</button>
+            </form>
+            <ul class="nav pull-right">
+              <li><a href="./about.html">About</a></li>
+              <li class="divider-vertical"></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Share <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Email</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Facebook</a></li>
+                  <li><a href="#">Twitter</a></li>
+                </ul>
+              </li>
+          </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <!-- Main hero unit for a primary marketing message or call to action -->
+      <div class="hero-unit" style="border:solid; background-color:#FBFFCC; border-color:#FFB752">
+                   <div style="float:right; ">
+                <img src="./assets/img/sun.png">
+          </div>
+        <h1 style="color:#00990D;font-weight:normal;">Go solar!</h1>
+
+        <p>Your condo or apartment can now go solar!</p>
+
+      <div class="controls">
+        <form action class="form-search">
+          <input  type="text" class="input-medium search-query span6" id="providerAccountId" name="providerAccountId"></input>
+          &nbsp;&nbsp;<a href="#" id="findBuilding" class="btn btn-primary btn-warning btn-large">Find your Building »</a>
+        </form>
+      </div>
+
+      </div>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="span4">
+          <h2>Cool</h2>
+           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn" href="#">View details »</a></p>
+        </div>
+        <div class="span4">
+          <h2>Solar</h2>
+           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn" href="#">View details »</a></p>
+       </div>
+        <div class="span4">
+          <h2>Power</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn" href="#">View details »</a></p>
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>©Genability 2012</p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+
+    <script type="text/javascript">
+    $(function() {
+
+      $("#findBuilding").click(function() {
+        window.location.href = "start.html?providerAccountId=" + $("#providerAccountId").val();  
+        
+      });
+
+      });
+    </script>
+
+
+<style id="_clearly_component__css" type="text/css">#next_pages_container { width: 5px; hight: 5px; position: absolute; top: -100px; left: -100px; z-index: 2147483647 !important; } </style><div id="_clearly_component__next_pages_container"></div></body></html>
