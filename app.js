@@ -151,7 +151,7 @@ app.get('/api/cards/:id', function (req, res){
 app.put('/api/cards/:id', function (req, res){
   return CardModel.findById(req.params.id, function (err, card) {
     card.name = req.body.name;
-    card`.description = req.body.description;    
+    card.description = req.body.description;    
     return product.save(function (err) {
       if (!err) {
         console.log("updated");
