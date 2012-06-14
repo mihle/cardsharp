@@ -107,7 +107,7 @@ app.delete('/api/products/:id', function (req, res){
 // Card API CRUD
 
 // get cards
-app.get('/api/products', function (req, res){
+app.get('/api/cards', function (req, res){
   return CardModel.find(function (err, cards) {
     if (!err) {
       return res.send(cards);
